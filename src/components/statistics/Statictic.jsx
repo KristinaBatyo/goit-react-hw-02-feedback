@@ -1,6 +1,6 @@
 
 import {StatisticsContainer, StatisticsTitle, StatisticsParagraph} from "./Statistics.styled";
-
+import PropTypes from 'prop-types';
 
 
 
@@ -16,6 +16,14 @@ export const Statisitc = ({good, neutral, bad, total, positivePercentage}) => {
             <StatisticsParagraph>Positive feedback: {positivePercentage}%</StatisticsParagraph>
         </StatisticsContainer>
     )
+}
+
+Statisitc.propTypes = {
+    good: PropTypes.number.isRequired,
+    neutral: PropTypes.number.isRequired,
+    bad: PropTypes.number.isRequired,
+    total: PropTypes.number.isRequired,
+    positivePercentage: PropTypes.number.isRequired,
 }
 
 
