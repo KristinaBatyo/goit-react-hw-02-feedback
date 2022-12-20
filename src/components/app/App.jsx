@@ -1,10 +1,10 @@
-import {FeedbackOptions} from "components/options/FeedbackOptions.jsx"
+import {Feedback} from "components/feedback/Feedback.jsx"
 
 
 export const App = () => {
   return (
     <>
-      <FeedbackOptions/>
+      <Feedback/>
     </>
   );
 };
