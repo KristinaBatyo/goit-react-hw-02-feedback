@@ -1,9 +1,9 @@
 import { Statisitc } from 'components/statistics/Statictic.jsx';
 import { Component } from 'react';
-import {FeedbackTitle, FeedbackContainer} from './Feedback.styled.jsx';
+import { FeedbackContainer} from './Feedback.styled.jsx';
 import { ButtonList } from 'components/options/FeedbackOptions.jsx';
 import { Notification } from 'components/notification/Notification.jsx';
-
+import { Sections } from 'components/sections/sections.jsx';
 
 
 export class Feedback extends Component {
@@ -33,7 +33,7 @@ export class Feedback extends Component {
     render () {
     return (
         <FeedbackContainer onClick={this.handleIncrement}>
-            <FeedbackTitle>Please leave feedback</FeedbackTitle>
+            <Sections title="Please leave feedback"/>
             <ButtonList />
             {this.totalFeedback()? (            <Statisitc good={this.state.good} neutral={this.state.neutral} bad={this.state.bad} total={this.totalFeedback()} positivePercentage={this.positivePercentage()}/>)
              : (<Notification message="There is no feedback"></Notification>)}
