@@ -6,6 +6,24 @@ import { Notification } from 'components/notification/Notification.jsx';
 import { Sections } from 'components/sections/sections.jsx';
 
 
+//     render () {
+//         const { good, neutral, bad } = this.state;
+//         const total = this.totalFeedback();
+//         const positivePercentage = this.positivePercentage();
+//         return (
+//             <Sections title="Please leave feedback">
+//                 <FeedbackContainer>
+//                     <Notification message="No feedback given" />
+//                     <ButtonList options={['good', 'neutral', 'bad']} onLeaveFeedback={this.handleIncrement} />
+//                     <Statisitc good={good} neutral={neutral} bad={bad} total={total} positivePercentage={positivePercentage} />
+//                 </FeedbackContainer>
+//             </Sections>
+//         )
+//     }
+// }
+
+//блок статистики рендериться тільки після того, як було зібрано хоча б один відгук
+
 export class Feedback extends Component {
     state = {
         good: 0,
@@ -31,15 +49,17 @@ export class Feedback extends Component {
 
 
     render () {
-    return (
-        <FeedbackContainer onClick={this.handleIncrement}>
-            <Sections title="Please leave feedback"/>
-            <ButtonList />
-            {this.totalFeedback()? (            <Statisitc good={this.state.good} neutral={this.state.neutral} bad={this.state.bad} total={this.totalFeedback()} positivePercentage={this.positivePercentage()}/>)
-             : (<Notification message="There is no feedback"></Notification>)}
-
-        </FeedbackContainer>
-
-    );
-}
+        const { good, neutral, bad } = this.state;
+        const total = this.totalFeedback();
+        const positivePercentage = this.positivePercentage();
+        return (
+            <Sections title="Please leave feedback">
+                <FeedbackContainer>
+                    <Notification message="No feedback given" />
+                    <ButtonList options={['good', 'neutral', 'bad']} onLeaveFeedback={this.handleIncrement} />
+                    {total > 0 && <Statisitc good={good} neutral={neutral} bad={bad} total={total} positivePercentage={positivePercentage} />}
+                </FeedbackContainer>
+            </Sections>
+        )
+    }
 }
